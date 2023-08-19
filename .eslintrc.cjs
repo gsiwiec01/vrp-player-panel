@@ -12,7 +12,6 @@ module.exports = {
     'eslint:recommended',
     'plugin:react/recommended',
     'plugin:react/jsx-runtime',
-    'plugin:@typescript-eslint/recommended-type-checked',
     'plugin:react-hooks/recommended',
     'prettier',
   ],
@@ -28,6 +27,6 @@ module.exports = {
   rules: {
     'react/react-in-jsx-scope': 'off',
     'react-refresh/only-export-components': ['warn', { allowConstantExport: true }],
-    "react/prop-types": [2, { "ignore": ["className", "type"] }]
+    'react/prop-types': [2, { ignore: ['className', 'type'] }],
   },
 };

@@ -110,7 +110,7 @@ export const LoginForm = () => {
 
   return (
     <Form {...form}>
-      <form onSubmit={() => form.handleSubmit(onSubmit)} className="space-y-4">
+      <form onSubmit={form.handleSubmit(onSubmit)} className="space-y-4">
         {form.formState.errors.root && (
           <Alert variant="destructive">
             <CrossCircledIcon className="h-4 w-4" />
@@ -187,14 +187,14 @@ export const LoginForm = () => {
             />
 
             <DialogFooter>
-              <Button type="submit" onClick={() => form.handleSubmit(onSubmit)}>
+              <Button type="submit" onClick={form.handleSubmit(onSubmit)}>
                 {login.isLoading ? <Spinner className="w-4 h-4" /> : <>Zaloguj</>}
               </Button>
             </DialogFooter>
           </DialogContent>
         </Dialog>
 
-        <Button type="submit" className="w-full" onClick={() => form.handleSubmit(onSubmit)}>
+        <Button type="submit" className="w-full" onClick={form.handleSubmit(onSubmit)}>
           {login.isLoading ? <Spinner className="w-4 h-4" /> : <>Zaloguj</>}
         </Button>
       </form>
