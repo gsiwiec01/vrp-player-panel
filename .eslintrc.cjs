@@ -28,5 +28,6 @@ module.exports = {
   rules: {
     'react/react-in-jsx-scope': 'off',
     'react-refresh/only-export-components': ['warn', { allowConstantExport: true }],
+    "react/prop-types": [2, { "ignore": ["className", "type"] }]
   },
 };
