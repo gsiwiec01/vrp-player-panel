@@ -68,7 +68,7 @@ export const MainLayout = () => {
     <div className="flex flex-col space-y-4 lg:flex-row lg:space-y-0">
       <div className="sticky flex flex-col justify-between lg:w-1/5 border-r h-screen p-10 space-y-4">
         <div className="space-y-4">
-          <img src="/vrp-logo.webp" className="h-16" />
+          <img src="/vrp-logo.webp" className="h-16" alt="logo v-rp.pl" />
 
           <MainNav items={items} />
         </div>
