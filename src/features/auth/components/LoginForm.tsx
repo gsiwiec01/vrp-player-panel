@@ -24,9 +24,8 @@ import {
 } from '@/components/ui/Dialog';
 import { DomainExceptionCode } from '@/constants/domainExceptionCode.ts';
 import { Alert, AlertDescription, AlertTitle } from '@/components/ui/Alert';
-import { CrossCircledIcon } from '@radix-ui/react-icons';
 import { useNavigate } from 'react-router-dom';
-import { Spinner } from '@/components/ui/Spinner.tsx';
+import { XCircle } from 'lucide-react';
 
 const loginSchema = z.object({
   username: z.string().nonempty(),
@@ -50,7 +49,6 @@ export const LoginForm = () => {
   const onSubmit: SubmitHandler<LoginSchema> = async (data) => {
     await login.mutateAsync(data, {
       onSuccess: () => {
-        console.log('work');
         navigate('/');
       },
       onError: ({ response }) => {
@@ -113,7 +111,7 @@ export const LoginForm = () => {
       <form onSubmit={form.handleSubmit(onSubmit)} className="space-y-4">
         {form.formState.errors.root && (
           <Alert variant="destructive">
-            <CrossCircledIcon className="h-4 w-4" />
+            <XCircle className="h-4 w-4" />
             <AlertTitle>{form.formState.errors.root.type}</AlertTitle>
             <AlertDescription>{form.formState.errors.root.message}</AlertDescription>
           </Alert>
@@ -187,15 +185,25 @@ export const LoginForm = () => {
             />
 
             <DialogFooter>
-              <Button type="submit" onClick={form.handleSubmit(onSubmit)}>
-                {login.isLoading ? <Spinner className="w-4 h-4" /> : <>Zaloguj</>}
+              <Button
+                type="submit"
+                className="w-full"
+                onClick={form.handleSubmit(onSubmit)}
+                loading={login.isLoading}
+              >
+                Zaloguj
               </Button>
             </DialogFooter>
           </DialogContent>
         </Dialog>
 
-        <Button type="submit" className="w-full" onClick={form.handleSubmit(onSubmit)}>
-          {login.isLoading ? <Spinner className="w-4 h-4" /> : <>Zaloguj</>}
+        <Button
+          type="submit"
+          className="w-full"
+          onClick={form.handleSubmit(onSubmit)}
+          loading={login.isLoading}
+        >
+          Zaloguj
         </Button>
       </form>
     </Form>

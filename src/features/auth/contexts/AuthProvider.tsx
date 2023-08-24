@@ -1,4 +1,4 @@
-import { createContext, ReactNode, useState } from 'react';
+import { createContext, ReactNode, useMemo, useState } from 'react';
 import { login as loginService, logout as logoutService } from '@/features/auth/services/auth';
 import { axios } from '@/services/baseApi.ts';
 import { useMutation, UseMutationResult } from '@tanstack/react-query';
@@ -7,20 +7,23 @@ import { LoginPayload } from '@/features/auth/services/auth';
 import { DomainException } from '@/constants/types.ts';
 import type { LoginResponse } from '@/features/auth/constants/types.ts';
 
-type AuthContext = {
+type AuthContextData = {
   login: UseMutationResult<AxiosResponse<LoginResponse>, AxiosError<DomainException>, LoginPayload>;
   logout: () => Promise<void>;
   accessToken: null | string;
+  isAuthorized: boolean;
 };
 
 type AuthProviderProps = {
   children: ReactNode;
 };
 
-export const AuthContext = createContext<AuthContext | null>(null);
+export const AuthContext = createContext<AuthContextData | null>(null);
 
 export const AuthProvider = ({ children }: AuthProviderProps) => {
-  const [accessToken, setAccessToken] = useState<string | null>(null);
+  const [accessToken, setAccessToken] = useState<string | null>(
+    localStorage.getItem('accessToken'),
+  );
 
   const login = useMutation<
     AxiosResponse<LoginResponse>,
@@ -42,7 +45,11 @@ export const AuthProvider = ({ children }: AuthProviderProps) => {
     return logoutService();
   };
 
+  const isAuthorized = useMemo(() => accessToken !== null, [accessToken]);
+
   return (
-    <AuthContext.Provider value={{ login, logout, accessToken }}>{children}</AuthContext.Provider>
+    <AuthContext.Provider value={{ login, logout, accessToken, isAuthorized }}>
+      {children}
+    </AuthContext.Provider>
   );
 };

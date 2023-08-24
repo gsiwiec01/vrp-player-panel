@@ -1,5 +1,6 @@
 import { axios } from '@/services/baseApi.ts';
 import { getBrowserHash } from '@/services/browserHash.ts';
+import { LoginResponse } from '@/features/auth/constants/types.ts';
 
 export type LoginPayload = {
   username: string;
