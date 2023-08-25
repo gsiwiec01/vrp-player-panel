@@ -16,7 +16,3 @@ export function login(data: LoginPayload) {
     browserHash: getBrowserHash(),
   });
 }
-
-export function logout() {
-  return Promise.resolve();
-}

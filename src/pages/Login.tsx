@@ -1,8 +1,19 @@
 import { Button } from '@/components/ui/Button.tsx';
 import { LoginForm } from '@/features/auth';
 import { Separator } from '@/components/ui/Separator.tsx';
+import { useLocation, useNavigate } from 'react-router-dom';
 
 export function Login() {
+  const { state } = useLocation();
+  const navigate = useNavigate();
+
+  const onSuccessHandler = () => {
+    const pathname = state.pathname ?? '/';
+
+    console.log(state);
+    navigate(pathname, { state: state.state });
+  };
+
   return (
     <div className="mx-auto flex flex-col justify-center space-y-6 w-[350px]">
       <div className="flex flex-col space-y-2 text-center">
@@ -10,7 +21,7 @@ export function Login() {
         <p className="text-sm text-muted-foreground">Wprowadź login i hasło aby się zalogować</p>
       </div>
 
-      <LoginForm />
+      <LoginForm onSuccess={onSuccessHandler} />
 
       <div className="relative">
         <div className="absolute inset-0 flex items-center">

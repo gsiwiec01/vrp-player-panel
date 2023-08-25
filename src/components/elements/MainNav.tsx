@@ -22,7 +22,7 @@ export const MainNav = ({ items }: SidebarNavProps) => {
             cn(
               buttonVariants({ variant: 'ghost' }),
               className,
-              isActive ? 'bg-muted hover:bg-muted' : 'hover:bg-transparent hover:underline',
+              isActive ? 'bg-muted hover:bg-muted' : 'hover:bg-card',
               'justify-start',
             )
           }

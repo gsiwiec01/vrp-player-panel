@@ -1,5 +1,5 @@
 import { ReactNode } from 'react';
-import { Navigate } from 'react-router-dom';
+import { Navigate, useLocation } from 'react-router-dom';
 import { useAuth } from '@/features/auth';
 
 type GuardedRouteProps = {
@@ -8,6 +8,11 @@ type GuardedRouteProps = {
 
 export const GuardedRoute = ({ render }: GuardedRouteProps) => {
   const { isAuthorized } = useAuth();
+  const { pathname, state } = useLocation();
 
-  return isAuthorized ? <>{render}</> : <Navigate to="/login" replace={true} />;
+  return isAuthorized ? (
+    <>{render}</>
+  ) : (
+    <Navigate to="/login" state={{ pathname, state }} replace={true} />
+  );
 };

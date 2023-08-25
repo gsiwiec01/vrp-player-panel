@@ -14,6 +14,7 @@ import {
   Presentation,
   ShoppingBasket,
 } from 'lucide-react';
+import { useAuth } from '@/features/auth';
 
 const items: SidebarNavLikProps[] = [
   {
@@ -38,7 +39,7 @@ const items: SidebarNavLikProps[] = [
   },
   {
     to: '/groups',
-    children: <>Hisotria logowań i czatu</>,
+    children: <>Historia logowań i czatu</>,
     icon: <History />,
   },
   {
@@ -64,6 +65,8 @@ const items: SidebarNavLikProps[] = [
 ];
 
 export const MainLayout = () => {
+  const { logout } = useAuth();
+
   return (
     <div className="flex flex-col space-y-4 lg:flex-row lg:space-y-0">
       <div className="sticky flex flex-col justify-between lg:w-1/5 border-r h-screen p-10 space-y-4">
@@ -92,7 +95,7 @@ export const MainLayout = () => {
               </div>
             </div>
 
-            <Button size="icon" variant="ghost">
+            <Button size="icon" variant="ghost" onClick={logout}>
               <LogOut className="h-4 w-4" />
             </Button>
           </div>
@@ -100,8 +103,6 @@ export const MainLayout = () => {
       </div>
 
       <div className="flex-1 lg:max-w-2xl p-10 h-[10000px]">
-        <h2 className="text-3xl font-bold tracking-tight">Dashboard</h2>
-
         <Outlet />
       </div>
     </div>

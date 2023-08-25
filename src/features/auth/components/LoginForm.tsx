@@ -24,7 +24,6 @@ import {
 } from '@/components/ui/Dialog';
 import { DomainExceptionCode } from '@/constants/domainExceptionCode.ts';
 import { Alert, AlertDescription, AlertTitle } from '@/components/ui/Alert';
-import { useNavigate } from 'react-router-dom';
 import { XCircle } from 'lucide-react';
 
 const loginSchema = z.object({
@@ -36,8 +35,11 @@ const loginSchema = z.object({
 
 type LoginSchema = z.infer<typeof loginSchema>;
 
-export const LoginForm = () => {
-  const navigate = useNavigate();
+type LoginFromProps = {
+  onSuccess?: () => void;
+};
+
+export const LoginForm = ({ onSuccess = () => {} }: LoginFromProps) => {
   const [isMfaInputVisible, setIsMfaInputVisible] = useState<boolean>(false);
 
   const { login } = useAuth();
@@ -48,9 +50,7 @@ export const LoginForm = () => {
 
   const onSubmit: SubmitHandler<LoginSchema> = async (data) => {
     await login.mutateAsync(data, {
-      onSuccess: () => {
-        navigate('/');
-      },
+      onSuccess: onSuccess,
       onError: ({ response }) => {
         if (!response || response.status != 400) return;
 
