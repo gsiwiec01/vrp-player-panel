@@ -1,9 +1,9 @@
-import * as React from 'react';
+import { forwardRef, HTMLAttributes } from 'react';
 import { cn } from '@/utils/shadcnUtils.ts';
 
-export const CardDescription = React.forwardRef<
+export const CardDescription = forwardRef<
   HTMLParagraphElement,
-  React.HTMLAttributes<HTMLParagraphElement>
+  HTMLAttributes<HTMLParagraphElement>
 >(({ className, ...props }, ref) => (
   <p ref={ref} className={cn('text-sm text-muted-foreground', className)} {...props} />
 ));

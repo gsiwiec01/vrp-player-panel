@@ -1,10 +1,10 @@
-import React from 'react';
+import { forwardRef, ComponentPropsWithoutRef, ElementRef } from 'react';
 import { cn } from '@/utils/shadcnUtils.ts';
 import { Title } from '@radix-ui/react-dialog';
 
-export const DialogTitle = React.forwardRef<
-  React.ElementRef<typeof Title>,
-  React.ComponentPropsWithoutRef<typeof Title>
+export const DialogTitle = forwardRef<
+  ElementRef<typeof Title>,
+  ComponentPropsWithoutRef<typeof Title>
 >(({ className, ...props }, ref) => (
   <Title
     ref={ref}

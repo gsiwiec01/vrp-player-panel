@@ -1,10 +1,10 @@
-import * as React from 'react';
+import { forwardRef, ComponentPropsWithoutRef, ElementRef } from 'react';
 import * as SheetPrimitive from '@radix-ui/react-dialog';
 import { cn } from '@/utils/shadcnUtils.ts';
 
-export const SheetOverlay = React.forwardRef<
-  React.ElementRef<typeof SheetPrimitive.Overlay>,
-  React.ComponentPropsWithoutRef<typeof SheetPrimitive.Overlay>
+export const SheetOverlay = forwardRef<
+  ElementRef<typeof SheetPrimitive.Overlay>,
+  ComponentPropsWithoutRef<typeof SheetPrimitive.Overlay>
 >(({ className, ...props }, ref) => (
   <SheetPrimitive.Overlay
     className={cn(

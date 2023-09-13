@@ -1,12 +1,12 @@
-import React from 'react';
+import { forwardRef, ComponentPropsWithoutRef, ElementRef } from 'react';
 import { Close, Content } from '@radix-ui/react-dialog';
 import { Cross2Icon } from '@radix-ui/react-icons';
 import { DialogPortal, DialogOverlay } from '.';
 import { cn } from '@/utils/shadcnUtils.ts';
 
-export const DialogContent = React.forwardRef<
-  React.ElementRef<typeof Content>,
-  React.ComponentPropsWithoutRef<typeof Content>
+export const DialogContent = forwardRef<
+  ElementRef<typeof Content>,
+  ComponentPropsWithoutRef<typeof Content>
 >(({ className, children, ...props }, ref) => (
   <DialogPortal>
     <DialogOverlay />

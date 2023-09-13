@@ -1,10 +1,10 @@
-import * as React from 'react';
+import { forwardRef, ComponentPropsWithoutRef, ElementRef } from 'react';
 import * as SheetPrimitive from '@radix-ui/react-dialog';
 import { cn } from '@/utils/shadcnUtils.ts';
 
-export const SheetDescription = React.forwardRef<
-  React.ElementRef<typeof SheetPrimitive.Description>,
-  React.ComponentPropsWithoutRef<typeof SheetPrimitive.Description>
+export const SheetDescription = forwardRef<
+  ElementRef<typeof SheetPrimitive.Description>,
+  ComponentPropsWithoutRef<typeof SheetPrimitive.Description>
 >(({ className, ...props }, ref) => (
   <SheetPrimitive.Description
     ref={ref}

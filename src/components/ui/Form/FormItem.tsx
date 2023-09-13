@@ -1,8 +1,8 @@
-import * as React from 'react';
+import { forwardRef, HTMLAttributes } from 'react';
 import { cn } from '@/utils/shadcnUtils.ts';
 import { FormItemProvider } from '@/contexts/FormItemProvider.tsx';
 
-export const FormItem = React.forwardRef<HTMLDivElement, React.HTMLAttributes<HTMLDivElement>>(
+export const FormItem = forwardRef<HTMLDivElement, HTMLAttributes<HTMLDivElement>>(
   ({ className, ...props }, ref) => {
     return (
       <FormItemProvider>

@@ -1,7 +1,7 @@
-import * as React from 'react';
+import { forwardRef, HTMLAttributes } from 'react';
 import { cn } from '@/utils/shadcnUtils.ts';
 
-export const CardHeader = React.forwardRef<HTMLDivElement, React.HTMLAttributes<HTMLDivElement>>(
+export const CardHeader = forwardRef<HTMLDivElement, HTMLAttributes<HTMLDivElement>>(
   ({ className, ...props }, ref) => (
     <div ref={ref} className={cn('flex flex-col space-y-1.5', className)} {...props} />
   ),

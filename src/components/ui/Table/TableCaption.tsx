@@ -1,9 +1,9 @@
-import * as React from 'react';
+import { forwardRef, HTMLAttributes } from 'react';
 import { cn } from '@/utils/shadcnUtils.ts';
 
-export const TableCaption = React.forwardRef<
+export const TableCaption = forwardRef<
   HTMLTableCaptionElement,
-  React.HTMLAttributes<HTMLTableCaptionElement>
+  HTMLAttributes<HTMLTableCaptionElement>
 >(({ className, ...props }, ref) => (
   <caption ref={ref} className={cn('mt-4 text-sm text-muted-foreground', className)} {...props} />
 ));

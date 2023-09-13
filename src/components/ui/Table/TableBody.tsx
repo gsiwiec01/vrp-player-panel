@@ -1,9 +1,9 @@
-import * as React from 'react';
+import { forwardRef, HTMLAttributes } from 'react';
 import { cn } from '@/utils/shadcnUtils.ts';
 
-export const TableBody = React.forwardRef<
+export const TableBody = forwardRef<
   HTMLTableSectionElement,
-  React.HTMLAttributes<HTMLTableSectionElement>
+  HTMLAttributes<HTMLTableSectionElement>
 >(({ className, ...props }, ref) => (
   <tbody ref={ref} className={cn('[&_tr:last-child]:border-0', className)} {...props} />
 ));

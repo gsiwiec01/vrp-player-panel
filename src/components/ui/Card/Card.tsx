@@ -1,8 +1,8 @@
-import * as React from 'react';
+import { forwardRef, HTMLAttributes } from 'react';
 
 import { cn } from '@/utils/shadcnUtils';
 
-export const Card = React.forwardRef<HTMLDivElement, React.HTMLAttributes<HTMLDivElement>>(
+export const Card = forwardRef<HTMLDivElement, HTMLAttributes<HTMLDivElement>>(
   ({ className, ...props }, ref) => (
     <div
       ref={ref}

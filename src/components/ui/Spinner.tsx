@@ -1,7 +1,7 @@
-import React, { forwardRef } from 'react';
+import { forwardRef, HTMLAttributes } from 'react';
 import { cn } from '@/utils/shadcnUtils.ts';
 
-export const Spinner = forwardRef<SVGSVGElement, React.HTMLAttributes<SVGSVGElement>>(
+export const Spinner = forwardRef<SVGSVGElement, HTMLAttributes<SVGSVGElement>>(
   ({ className, ...props }, ref) => {
     return (
       <svg

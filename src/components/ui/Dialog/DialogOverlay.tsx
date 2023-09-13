@@ -1,10 +1,10 @@
-import React from 'react';
+import { forwardRef, ComponentPropsWithoutRef, ElementRef } from 'react';
 import { Overlay } from '@radix-ui/react-dialog';
 import { cn } from '@/utils/shadcnUtils.ts';
 
-export const DialogOverlay = React.forwardRef<
-  React.ElementRef<typeof Overlay>,
-  React.ComponentPropsWithoutRef<typeof Overlay>
+export const DialogOverlay = forwardRef<
+  ElementRef<typeof Overlay>,
+  ComponentPropsWithoutRef<typeof Overlay>
 >(({ className, ...props }, ref) => (
   <Overlay
     ref={ref}
