@@ -1,9 +1,7 @@
 import { Outlet } from 'react-router-dom';
-import { MainNav, SidebarNavLikProps } from '@/components/elements/MainNav.tsx';
-import { Avatar, AvatarFallback, AvatarImage } from '@/components/ui/Avatar';
+import { SiteNavLinkProps } from '@/components/elements/SiteNavLink.tsx';
 import { Button } from '@/components/ui/Button.tsx';
 import {
-  LogOut,
   Home,
   User2,
   Users2,
@@ -13,11 +11,14 @@ import {
   SprayCan,
   Presentation,
   ShoppingBasket,
+  Map,
 } from 'lucide-react';
-import { useAuth } from '@/features/auth';
-import { Tooltip, TooltipContent, TooltipTrigger } from '@/components/ui/Tooltip';
+import { Sheet, SheetContent, SheetTrigger } from '@/components/ui/Sheet';
+import { useState } from 'react';
+import { SiteSider } from '@/components/elements/SiteSider.tsx';
+import { Separator } from '@/components/ui/Separator.tsx';
 
-const items: SidebarNavLikProps[] = [
+const items: SiteNavLinkProps[] = [
   {
     to: '/',
     children: <>Dashboard</>,
@@ -66,47 +67,36 @@ const items: SidebarNavLikProps[] = [
 ];
 
 export const MainLayout = () => {
-  const { logout } = useAuth();
+  const [isMenuOpen, setIsMenuOpen] = useState<boolean>(false);
 
   return (
-    <div className="flex flex-col space-y-4 lg:flex-row lg:space-y-0">
-      <aside className="sticky top-0 flex flex-col justify-between lg:w-1/5 border-r h-screen p-10 space-y-4">
-        <div className="space-y-4">
+    <div className="flex flex-col lg:flex-row">
+      <nav className="hidden lg:flex flex-col sticky top-0 lg:w-1/5 lg:min-w-[350px] border-r h-screen p-10 space-y-4">
+        <SiteSider menuItemList={items} />
+      </nav>
+
+      <div className="lg:hidden">
+        <nav className="flex justify-between items-center mx-10">
           <img src="/vrp-logo.webp" className="h-16" alt="logo v-rp.pl" />
 
-          <MainNav items={items} />
-        </div>
+          <Sheet open={isMenuOpen} onOpenChange={setIsMenuOpen}>
+            <SheetTrigger asChild>
+              <Button size="icon" variant="ghost" onClick={() => setIsMenuOpen((x) => !x)}>
+                <Map />
+              </Button>
+            </SheetTrigger>
 
-        <div className="space-y-4">
-          <div className="flex items-center justify-between bg-card space-x-4 rounded-md border p-4">
-            <p>Gracze na serwerze:</p>
-            <p className="text-muted-foreground">243</p>
-          </div>
+            <SheetContent
+              side="right"
+              className="flex flex-col space-y-6 w-full sm:w-1/5 sm:min-w-[400px]"
+            >
+              <SiteSider menuItemList={items} />
+            </SheetContent>
+          </Sheet>
+        </nav>
 
-          <div className="flex items-center justify-between bg-card space-x-4 rounded-md border p-4">
-            <div className="flex items-center space-x-4">
-              <Avatar>
-                <AvatarImage src="https://github.com/shadcn.png" />
-                <AvatarFallback>CN</AvatarFallback>
-              </Avatar>
-
-              <div className="space-y-1">
-                <h4 className="leading-[1]">KoruS</h4>
-                <p className="text-xs text-muted-foreground leading-[1]">Developer</p>
-              </div>
-            </div>
-
-            <Tooltip>
-              <TooltipTrigger asChild>
-                <Button size="icon" variant="ghost" onClick={logout}>
-                  <LogOut className="h-4 w-4" />
-                </Button>
-              </TooltipTrigger>
-              <TooltipContent>Wyloguj</TooltipContent>
-            </Tooltip>
-          </div>
-        </div>
-      </aside>
+        <Separator />
+      </div>
 
       <main className="flex-1 p-10">
         <Outlet />

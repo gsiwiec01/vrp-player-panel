@@ -27,7 +27,10 @@ module.exports = {
   rules: {
     'react/react-in-jsx-scope': 'off',
     'react-refresh/only-export-components': ['warn', { allowConstantExport: true }],
-    'react/prop-types': [2, { ignore: ['className', 'type', 'decorative', 'orientation', 'sideOffset'] }],
+    'react/prop-types': [
+      2,
+      { ignore: ['className', 'type', 'decorative', 'orientation', 'sideOffset'] },
+    ],
     '@typescript-eslint/no-unused-vars': 'off',
     'unused-imports/no-unused-imports': 'error',
     'unused-imports/no-unused-vars': [
