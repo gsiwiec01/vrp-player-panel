@@ -1,8 +1,15 @@
 import React from 'react';
 import ReactDOM from 'react-dom/client';
 
+import dayjs from 'dayjs';
+import locale from 'dayjs/locale/pl';
+import duration from 'dayjs/plugin/duration';
+
 import { App } from './App.tsx';
 import '@/global.css';
+
+dayjs.locale(locale);
+dayjs.extend(duration);
 
 const rootElement = document.getElementById('root');
 if (rootElement == null)

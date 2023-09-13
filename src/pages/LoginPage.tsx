@@ -3,14 +3,12 @@ import { LoginForm } from '@/features/auth';
 import { Separator } from '@/components/ui/Separator.tsx';
 import { useLocation, useNavigate } from 'react-router-dom';
 
-export function Login() {
+export function LoginPage() {
   const { state } = useLocation();
   const navigate = useNavigate();
 
   const onSuccessHandler = () => {
     const pathname = state.pathname ?? '/';
-
-    console.log(state);
     navigate(pathname, { state: state.state });
   };
 

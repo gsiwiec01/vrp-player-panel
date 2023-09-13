@@ -1,9 +1,12 @@
 import { RouteObject } from 'react-router-dom';
-import { Login } from '@/pages/Login.tsx';
-import { MainLayout } from '@/layouts/MainLayout.tsx';
+
 import { GuardedRoute } from '@/components/router/GuardedRoute.tsx';
+import { MainLayout } from '@/layouts/MainLayout.tsx';
 import { SideLayout } from '@/layouts/SideLayout.tsx';
+
+import { LoginPage } from '@/pages/LoginPage.tsx';
 import { Error404 } from '@/pages/Error404.tsx';
+import { CharacterListPage } from '@/pages/Characters/CharacterListPage.tsx';
 
 export const routes: RouteObject[] = [
   {
@@ -13,6 +16,14 @@ export const routes: RouteObject[] = [
         path: '/',
         element: <>Work</>,
       },
+      {
+        path: '/characters',
+        element: <CharacterListPage />,
+      },
+      {
+        path: '/characters/:slag',
+        element: <>work</>,
+      },
     ],
   },
   {
@@ -20,7 +31,7 @@ export const routes: RouteObject[] = [
     children: [
       {
         path: '/login',
-        element: <Login />,
+        element: <LoginPage />,
       },
       {
         path: '*',

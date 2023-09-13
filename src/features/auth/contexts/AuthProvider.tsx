@@ -34,7 +34,7 @@ export const AuthProvider = ({ children }: AuthProviderProps) => {
     onSuccess: ({ data }) => {
       setAccessToken(data.accessToken);
 
-      axios.defaults.headers.common['Authorization'] = data.accessToken;
+      axios.defaults.headers.common['Authorization'] = `Bearer ${data.accessToken}`;
 
       localStorage.setItem('accessToken', data.accessToken);
       localStorage.setItem('refreshToken', data.refreshToken);

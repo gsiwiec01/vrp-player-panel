@@ -15,6 +15,7 @@ import {
   ShoppingBasket,
 } from 'lucide-react';
 import { useAuth } from '@/features/auth';
+import { Tooltip, TooltipContent, TooltipTrigger } from '@/components/ui/Tooltip';
 
 const items: SidebarNavLikProps[] = [
   {
@@ -69,7 +70,7 @@ export const MainLayout = () => {
 
   return (
     <div className="flex flex-col space-y-4 lg:flex-row lg:space-y-0">
-      <div className="sticky flex flex-col justify-between lg:w-1/5 border-r h-screen p-10 space-y-4">
+      <aside className="sticky top-0 flex flex-col justify-between lg:w-1/5 border-r h-screen p-10 space-y-4">
         <div className="space-y-4">
           <img src="/vrp-logo.webp" className="h-16" alt="logo v-rp.pl" />
 
@@ -95,16 +96,21 @@ export const MainLayout = () => {
               </div>
             </div>
 
-            <Button size="icon" variant="ghost" onClick={logout}>
-              <LogOut className="h-4 w-4" />
-            </Button>
+            <Tooltip>
+              <TooltipTrigger asChild>
+                <Button size="icon" variant="ghost" onClick={logout}>
+                  <LogOut className="h-4 w-4" />
+                </Button>
+              </TooltipTrigger>
+              <TooltipContent>Wyloguj</TooltipContent>
+            </Tooltip>
           </div>
         </div>
-      </div>
+      </aside>
 
-      <div className="flex-1 lg:max-w-2xl p-10 h-[10000px]">
+      <main className="flex-1 p-10">
         <Outlet />
-      </div>
+      </main>
     </div>
   );
 };
