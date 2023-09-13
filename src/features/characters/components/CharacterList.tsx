@@ -43,8 +43,11 @@ export const CharacterList = () => {
   return (
     <>
       <Card className="flex-row space-y-0 items-center justify-end">
-        <CardContent>
-          <form onSubmit={form.handleSubmit(onSubmit)} className="flex items-center space-x-6">
+        <CardContent className="w-full">
+          <form
+            onSubmit={form.handleSubmit(onSubmit)}
+            className="w-full flex flex-wrap sm:justify-end items-center gap-4 "
+          >
             <div className="flex items-center space-x-2">
               <FormField
                 control={form.control}
@@ -59,11 +62,11 @@ export const CharacterList = () => {
 
             <Input
               {...form.register('searchPhrase')}
-              className="w-[300px]"
+              className="flex-1 min-w-[200px] sm:max-w-[300px]"
               placeholder="Wyszukaj postać"
             />
 
-            <Button>
+            <Button className="grid-span-2 w-fit ml-auto sm:ml-0">
               <Filter className="w-4 h-4 mr-4" />
               Filtruj
             </Button>
@@ -86,16 +89,14 @@ export const CharacterList = () => {
           next={fetchNextPage}
           hasMore={!!hasNextPage}
           loader={
-            <p className="text-muted-foreground text-center w-full py-6 !mx-0 col-span-4">
-              Ładowanie....
-            </p>
+            <p className="text-muted-foreground text-center w-full col-span-full">Ładowanie....</p>
           }
           endMessage={
-            <p className="text-muted-foreground text-center w-full py-6 !mx-0 col-span-4">
+            <p className="text-muted-foreground text-center w-full col-span-full">
               Nie masz więcej postaci do załadowania.
             </p>
           }
-          className="grid xl:grid-cols-4 grid-cols-1 gap-6"
+          className="grid grid-cols-1 sm:grid-cols-2 xl:grid-cols-3 2xl:grid-cols-4 gap-6"
         >
           {data?.pages.map((x) => (
             <>
