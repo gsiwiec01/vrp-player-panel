@@ -6,3 +6,8 @@ export const axios = Axios.create({
     'Content-type': 'application/json',
   },
 });
+
+const accessToken = localStorage.getItem('accessToken');
+if (accessToken) {
+  axios.defaults.headers.common['Authorization'] = `Bearer ${accessToken}`;
+}
