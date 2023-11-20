@@ -2,6 +2,7 @@ import { axios } from '@/services/baseApi.ts';
 import {
   UserCharacterListRequestDto,
   UserCharacterListResponseDto,
+  UserCreationCharacterRequestDto,
 } from '@/features/characters/constants/dtos.ts';
 
 export function getCharacterList({
@@ -18,4 +19,8 @@ export function getCharacterList({
 
 export function toggleCharacterVisibility(characterId: number) {
   return axios.patch('user/character/toggleHide', { characterId });
+}
+
+export function createCharacter(data: UserCreationCharacterRequestDto) {
+  return axios.post('user/character', data);
 }

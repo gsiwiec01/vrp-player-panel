@@ -10,7 +10,7 @@ import type { CharacterBasicData } from '@/features/characters/constants/types.t
 import { Sex } from '@/constants/enums/Sex.ts';
 import dayjs from 'dayjs';
 import { useMutation, useQueryClient } from '@tanstack/react-query';
-import { toggleCharacterVisibility } from '@/features/characters/services/characterService.ts';
+import { toggleCharacterVisibility } from '@/features/characters/services/character.ts';
 import { QueryKey } from '@/constants/enums/QueryKey.ts';
 import { UserCharacterListResponseDto } from '@/features/characters/constants/dtos.ts';
 import { AxiosResponse } from 'axios';

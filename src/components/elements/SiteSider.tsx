@@ -20,7 +20,7 @@ export const SiteSider = ({ menuItemList }: SiteSiderProps) => {
       </header>
 
       <ScrollArea>
-        <nav className="flex flex-col space-x-2 space-y-2">
+        <nav className="flex flex-col space-y-2">
           {menuItemList.map((x) => (
             <SiteNavLink key={`${x.to}`} {...x} />
           ))}

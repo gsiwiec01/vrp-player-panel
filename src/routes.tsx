@@ -7,6 +7,7 @@ import { SideLayout } from '@/layouts/SideLayout.tsx';
 import { LoginPage } from '@/pages/LoginPage.tsx';
 import { Error404 } from '@/pages/Error404.tsx';
 import { CharacterListPage } from '@/pages/Characters/CharacterListPage.tsx';
+import { CharacterCreationPage } from '@/pages/Characters/CharacterCreationPage.tsx';
 
 export const routes: RouteObject[] = [
   {
@@ -23,6 +24,10 @@ export const routes: RouteObject[] = [
       {
         path: '/characters/:slag',
         element: <>work</>,
+      },
+      {
+        path: '/characters/new',
+        element: <CharacterCreationPage />,
       },
     ],
   },

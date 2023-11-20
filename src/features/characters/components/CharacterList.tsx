@@ -5,7 +5,7 @@ import { CircleSlash, Filter } from 'lucide-react';
 import { Switch } from '@/components/ui/Switch.tsx';
 import { Label } from '@/components/ui/Label.tsx';
 import { useInfiniteQuery } from '@tanstack/react-query';
-import { getCharacterList } from '@/features/characters/services/characterService.ts';
+import { getCharacterList } from '@/features/characters/services/character.ts';
 import { useForm } from 'react-hook-form';
 import { z } from 'zod';
 import { zodResolver } from '@hookform/resolvers/zod';

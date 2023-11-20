@@ -2,19 +2,24 @@ import { Button } from '@/components/ui/Button.tsx';
 import { Link } from 'react-router-dom';
 import { UserPlus2 } from 'lucide-react';
 import { CharacterList } from '@/features/characters/components/CharacterList.tsx';
+import {
+  PageHeader,
+  PageHeaderDescription,
+  PageHeaderHeading,
+} from '@/components/elements/PageHeader';
 
 export const CharacterListPage = () => {
   return (
     <div className="space-y-6 flex flex-col">
       <div className="flex flex-wrap justify-between items-center gap-6">
-        <div className="space-y-0.5">
-          <h2 className="text-2xl font-bold tracking-tight">Postacie</h2>
-          <p className="text-muted-foreground">Zarządzaj swoimi postaciami.</p>
-        </div>
+        <PageHeader>
+          <PageHeaderHeading>Postacie</PageHeaderHeading>
+          <PageHeaderDescription>Zarządzaj swoimi postaciami.</PageHeaderDescription>
+        </PageHeader>
 
         <Button asChild className="w-full sm:w-fit">
-          <Link to="/characters/create-new">
-            <UserPlus2 className="h-4 w-4 mr-4" />
+          <Link to="/characters/new">
+            <UserPlus2 className="mr-4" />
             Stwórz nową postać
           </Link>
         </Button>

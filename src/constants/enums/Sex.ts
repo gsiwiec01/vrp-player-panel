@@ -1,4 +1,4 @@
-export const enum Sex {
+export enum Sex {
   Unknown,
   Male,
   Female,
